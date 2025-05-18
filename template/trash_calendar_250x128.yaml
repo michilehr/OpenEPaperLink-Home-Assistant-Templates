@@ -1,0 +1,68 @@
+alias: EPaper Tag - Trash Calendar
+description: ""
+triggers:
+  - trigger: time_pattern
+    hours: /12
+conditions: []
+actions:
+  - action: calendar.get_events
+    metadata: {}
+    data:
+      duration:
+        hours: 480
+        minutes: 0
+        seconds: 0
+    target:
+      entity_id: calendar.neckarsulm_mullkalender
+    response_variable: cal
+  - data:
+      background: white
+      rotate: 0
+      payload:
+        - type: text
+          value: >
+            {% set calendar_datetime =
+            cal[my_cal]['events'][0].start|as_datetime %} {{
+            weekdays.get(calendar_datetime.strftime('%a'), '--') }}, {{
+            calendar_datetime.strftime('%d.%m.%Y') }}
+          x: 10
+          "y": 10
+          size: 20
+          color: black
+        - type: text
+          value: "{{ cal[my_cal]['events'][0].summary }}"
+          x: 10
+          "y": 35
+          size: 25
+          color: red
+        - type: text
+          value: >
+            {% set calendar_datetime =
+            cal[my_cal]['events'][1].start|as_datetime %} {{
+            weekdays.get(calendar_datetime.strftime('%a'), '--') }}, {{
+            calendar_datetime.strftime('%d.%m.%Y') }}
+          x: 10
+          "y": 65
+          size: 20
+          color: black
+        - type: text
+          value: "{{ cal[my_cal]['events'][1].summary }}"
+          x: 10
+          "y": 90
+          size: 25
+          color: red
+    target:
+      device_id:
+        - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    action: open_epaper_link.drawcustom
+mode: restart
+variables:
+  my_cal: calendar.neckarsulm_mullkalender
+  weekdays:
+    Mon: Mo
+    Tue: Di
+    Wed: Mi
+    Thu: Do
+    Fri: Fr
+    Sat: Sa
+    Sun: So

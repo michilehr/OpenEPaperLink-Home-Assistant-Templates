@@ -1,0 +1,391 @@
+alias: EPaper Tag - Weather Forecast
+description: ""
+triggers:
+  - trigger: time_pattern
+    hours: /4
+conditions: []
+actions:
+  - data:
+      background: white
+      rotate: 0
+      payload:
+        - type: text
+          value: Neckarsulm
+          font: ppb.ttf
+          x: 10
+          "y": 10
+          size: 14
+        - type: text
+          value: >-
+            {{ weekdays.get(now().strftime('%a'), '--') }}, {{
+            now().strftime('%d.%m.%Y - %H:%M') }}
+          font: rbm.ttf
+          x: 286
+          "y": 10
+          size: 14
+          anchor: rt
+        - type: text
+          value: Heute
+          font: rbm.ttf
+          x: 30
+          "y": 30
+          anchor: mt
+          size: 12
+        - type: icon
+          value: >
+            {% set cond = state_attr('sensor.weather_forecast_daily',
+            'forecast')[0].condition %} {{ icons.get(cond, icons.fallback) }}
+          x: 30
+          anchor: mm
+          "y": 65
+          size: 45
+          color: red
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[0].templow
+            }} {{
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
+          font: rbm.ttf
+          x: 30
+          "y": 90
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[0].temperature
+            }} {{
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
+          font: rbm.ttf
+          x: 30
+          "y": 105
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[0].precipitation
+            }} mm
+          font: rbm.ttf
+          x: 30
+          "y": 120
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[0].uv_index
+            }} UV
+          font: rbm.ttf
+          x: 30
+          "y": 135
+          anchor: mt
+          size: 12
+        - type: line
+          x_start: 59
+          x_end: 59
+          y_start: 25
+          y_end: 147
+          width: 1
+          fill: half_black
+        - type: text
+          value: >
+            {% set cond = (state_attr('sensor.weather_forecast_daily',
+            'forecast')[1].datetime|as_datetime).strftime('%a') %}
+
+            {{ weekdays.get(cond, '--') }}
+          font: rbm.ttf
+          x: 89
+          "y": 30
+          anchor: mt
+          size: 12
+        - type: icon
+          value: >
+            {% set cond = state_attr('sensor.weather_forecast_daily_2',
+            'forecast')[1].condition %} {{ icons.get(cond, icons.fallback) }}
+          x: 89
+          anchor: mm
+          "y": 65
+          size: 45
+          color: red
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[1].templow
+            }} {{
+            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+          font: rbm.ttf
+          x: 89
+          "y": 90
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[1].temperature
+            }} {{
+            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+          font: rbm.ttf
+          x: 89
+          "y": 105
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[1].precipitation
+            }} mm
+          font: rbm.ttf
+          x: 89
+          "y": 120
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[1].uv_index
+            }} UV
+          font: rbm.ttf
+          x: 89
+          "y": 135
+          anchor: mt
+          size: 12
+        - type: line
+          x_start: 118
+          x_end: 118
+          y_start: 25
+          y_end: 147
+          width: 1
+          fill: half_black
+        - type: text
+          value: >
+            {% set cond = (state_attr('sensor.weather_forecast_daily_2',
+            'forecast')[2].datetime|as_datetime).strftime('%a') %}
+
+            {{ weekdays.get(cond, '--') }}
+          font: rbm.ttf
+          x: 148
+          "y": 30
+          anchor: mt
+          size: 12
+        - type: icon
+          value: >
+            {% set cond = state_attr('sensor.weather_forecast_daily_2',
+            'forecast')[2].condition %} {{ icons.get(cond, icons.fallback) }}
+          x: 148
+          anchor: mm
+          "y": 65
+          size: 45
+          color: red
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[2].templow
+            }} {{
+            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+          font: rbm.ttf
+          x: 148
+          "y": 90
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[2].temperature
+            }} {{
+            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+          font: rbm.ttf
+          x: 148
+          "y": 105
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[2].precipitation
+            }} mm
+          font: rbm.ttf
+          x: 148
+          "y": 120
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[2].uv_index
+            }} UV
+          font: rbm.ttf
+          x: 148
+          "y": 135
+          anchor: mt
+          size: 12
+        - type: line
+          x_start: 177
+          x_end: 177
+          y_start: 25
+          y_end: 147
+          width: 1
+          fill: half_black
+        - type: text
+          value: >
+            {% set cond = (state_attr('sensor.weather_forecast_daily_2',
+            'forecast')[3].datetime|as_datetime).strftime('%a') %}
+
+            {{ weekdays.get(cond, '--') }}
+          font: rbm.ttf
+          x: 207
+          "y": 30
+          anchor: mt
+          size: 12
+        - type: icon
+          value: >
+            {% set cond = state_attr('sensor.weather_forecast_daily_2',
+            'forecast')[3].condition %} {{ icons.get(cond, icons.fallback) }}
+          x: 207
+          anchor: mm
+          "y": 65
+          size: 45
+          color: red
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[3].templow
+            }} {{
+            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+          font: rbm.ttf
+          x: 207
+          "y": 90
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[3].temperature
+            }} {{
+            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+          font: rbm.ttf
+          x: 207
+          "y": 105
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[3].precipitation
+            }} mm
+          font: rbm.ttf
+          x: 207
+          "y": 120
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[3].uv_index
+            }} UV
+          font: rbm.ttf
+          x: 207
+          "y": 135
+          anchor: mt
+          size: 12
+        - type: line
+          x_start: 236
+          x_end: 236
+          y_start: 25
+          y_end: 147
+          width: 1
+          fill: half_black
+        - type: text
+          value: >
+            {% set cond = (state_attr('sensor.weather_forecast_daily_2',
+            'forecast')[4].datetime|as_datetime).strftime('%a') %}
+
+            {{ weekdays.get(cond, '--') }}
+          font: rbm.ttf
+          x: 266
+          "y": 30
+          anchor: mt
+          size: 12
+        - type: icon
+          value: >
+            {% set cond = state_attr('sensor.weather_forecast_daily_2',
+            'forecast')[4].condition %} {{ icons.get(cond, icons.fallback) }}
+          x: 266
+          anchor: mm
+          "y": 65
+          size: 45
+          color: red
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[4].templow
+            }} {{
+            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+          font: rbm.ttf
+          x: 266
+          "y": 90
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[4].temperature
+            }} {{
+            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+          font: rbm.ttf
+          x: 266
+          "y": 105
+          anchor: mt
+          size: 12
+        - type: text
+          value: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[4].precipitation
+            }} mm
+          font: rbm.ttf
+          x: 266
+          "y": 120
+          anchor: mt
+          size: 12
+        - type: text
+          value: "{{ state_attr('sensor.weather_forecast_daily_2','forecast')[4] }} UV"
+          font: rbm.ttf
+          x: 266
+          "y": 135
+          anchor: mt
+          size: 12
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily_2','forecast')[4].uv_index
+            is defined }}
+    action: open_epaper_link.drawcustom
+    target:
+      device_id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+mode: restart
+variables:
+  icons:
+    clear-night: mdi:weather-night
+    sunny: mdi:weather-sunny
+    cloudy: mdi:weather-cloudy
+    exceptional: mdi:alert
+    fog: mdi:weather-fog
+    hail: mdi:weather-hail
+    lightning: mdi:weather-lightning
+    lightning-rainy: mdi:weather-lightning-rainy
+    partlycloudy: mdi:weather-partly-cloudy
+    pouring: mdi:weather-pouring
+    rainy: mdi:weather-rainy
+    snowy: mdi:weather-snowy
+    snowy-rainy: mdi:weather-snowy-rainy
+    windy: mdi:weather-windy
+    windy-variant: mdi:weather-windy-variant
+    fallback: mdi:emoticon-happy
+  weekdays:
+    Mon: Mo
+    Tue: Di
+    Wed: Mi
+    Thu: Do
+    Fri: Fr
+    Sat: Sa
+    Sun: So

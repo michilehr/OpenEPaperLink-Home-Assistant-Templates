@@ -1,0 +1,105 @@
+alias: EPaper Tag - Current Weather Data
+description: ""
+triggers:
+  - minutes: /20
+    trigger: time_pattern
+conditions:
+  - condition: time
+    after: "06:00:00"
+    before: "23:30:00"
+actions:
+  - data:
+      background: white
+      rotate: 0
+      payload:
+        - type: text
+          value: Temperatur
+          font: rbm.ttf
+          x: 10
+          "y": 10
+          size: 14
+        - type: text
+          value: "{{ states('sensor.gw1000a_v1_7_5_outdoor_temperature') }} {{ state_attr('sensor.gw1000a_v1_7_5_outdoor_temperature','unit_of_measurement') }}"
+          x: 10
+          "y": 40
+          size: 35
+          color: red
+        - type: icon
+          value: mdi:thermometer
+          x: 110
+          "y": 5
+          size: 30
+          color: black
+        - type: text
+          value: Luftfeuchtigkeit
+          font: rbm.ttf
+          x: 158
+          "y": 10
+          size: 14
+        - type: text
+          value: "{{ states('sensor.gw1000a_v1_7_5_humidity') }} {{ state_attr('sensor.gw1000a_v1_7_5_humidity','unit_of_measurement') }}"
+          x: 158
+          "y": 40
+          size: 35
+          color: red
+        - type: icon
+          value: mdi:water-percent
+          x: 258
+          "y": 5
+          size: 30
+          color: black
+        - type: text
+          value: UV Index
+          font: rbm.ttf
+          x: 10
+          "y": 86
+          size: 14
+        - type: text
+          value: "{{ states('sensor.gw1000a_v1_7_5_uv_index') }} UV"
+          x: 10
+          "y": 116
+          size: 35
+          color: red
+        - type: icon
+          value: mdi:white-balance-sunny
+          x: 110
+          "y": 81
+          size: 30
+          color: black
+        - type: text
+          value: Böen Max
+          font: rbm.ttf
+          x: 158
+          "y": 86
+          size: 14
+        - type: text
+          value: "{{ states('sensor.gw1000a_v1_7_5_wind_gust') }}"
+          x: 158
+          "y": 116
+          size: 35
+          color: red
+        - type: icon
+          value: mdi:weather-windy
+          x: 258
+          "y": 81
+          size: 30
+          color: black
+        - type: line
+          x_start: 0
+          x_end: 296
+          y_start: 76
+          width: 1
+          fill: half_black
+        - type: line
+          x_start: 148
+          x_end: 148
+          y_start: 0
+          y_end: 152
+          width: 1
+          fill: half_black
+      dither: "2"
+    target:
+      device_id:
+        - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    action: open_epaper_link.drawcustom
+mode: restart
