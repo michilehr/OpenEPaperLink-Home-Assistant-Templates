@@ -82,6 +82,10 @@ actions:
           "y": 135
           anchor: mt
           size: 12
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[0].uv_index
+            is defined }}
         - type: line
           x_start: 59
           x_end: 59
@@ -102,7 +106,7 @@ actions:
           size: 12
         - type: icon
           value: >
-            {% set cond = state_attr('sensor.weather_forecast_daily_2',
+            {% set cond = state_attr('sensor.weather_forecast_daily',
             'forecast')[1].condition %} {{ icons.get(cond, icons.fallback) }}
           x: 89
           anchor: mm
@@ -114,7 +118,7 @@ actions:
             {{
             state_attr('sensor.weather_forecast_daily','forecast')[1].templow
             }} {{
-            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
           font: rbm.ttf
           x: 89
           "y": 90
@@ -123,9 +127,9 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[1].temperature
+            state_attr('sensor.weather_forecast_daily','forecast')[1].temperature
             }} {{
-            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
           font: rbm.ttf
           x: 89
           "y": 105
@@ -134,7 +138,7 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[1].precipitation
+            state_attr('sensor.weather_forecast_daily','forecast')[1].precipitation
             }} mm
           font: rbm.ttf
           x: 89
@@ -144,13 +148,17 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[1].uv_index
+            state_attr('sensor.weather_forecast_daily','forecast')[1].uv_index
             }} UV
           font: rbm.ttf
           x: 89
           "y": 135
           anchor: mt
           size: 12
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[1].uv_index
+            is defined }}
         - type: line
           x_start: 118
           x_end: 118
@@ -160,7 +168,7 @@ actions:
           fill: half_black
         - type: text
           value: >
-            {% set cond = (state_attr('sensor.weather_forecast_daily_2',
+            {% set cond = (state_attr('sensor.weather_forecast_daily',
             'forecast')[2].datetime|as_datetime).strftime('%a') %}
 
             {{ weekdays.get(cond, '--') }}
@@ -171,7 +179,7 @@ actions:
           size: 12
         - type: icon
           value: >
-            {% set cond = state_attr('sensor.weather_forecast_daily_2',
+            {% set cond = state_attr('sensor.weather_forecast_daily',
             'forecast')[2].condition %} {{ icons.get(cond, icons.fallback) }}
           x: 148
           anchor: mm
@@ -181,9 +189,9 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[2].templow
+            state_attr('sensor.weather_forecast_daily','forecast')[2].templow
             }} {{
-            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
           font: rbm.ttf
           x: 148
           "y": 90
@@ -192,9 +200,9 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[2].temperature
+            state_attr('sensor.weather_forecast_daily','forecast')[2].temperature
             }} {{
-            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
           font: rbm.ttf
           x: 148
           "y": 105
@@ -203,7 +211,7 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[2].precipitation
+            state_attr('sensor.weather_forecast_daily','forecast')[2].precipitation
             }} mm
           font: rbm.ttf
           x: 148
@@ -213,13 +221,17 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[2].uv_index
+            state_attr('sensor.weather_forecast_daily','forecast')[2].uv_index
             }} UV
           font: rbm.ttf
           x: 148
           "y": 135
           anchor: mt
           size: 12
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[2].uv_index
+            is defined }}
         - type: line
           x_start: 177
           x_end: 177
@@ -229,7 +241,7 @@ actions:
           fill: half_black
         - type: text
           value: >
-            {% set cond = (state_attr('sensor.weather_forecast_daily_2',
+            {% set cond = (state_attr('sensor.weather_forecast_daily',
             'forecast')[3].datetime|as_datetime).strftime('%a') %}
 
             {{ weekdays.get(cond, '--') }}
@@ -240,7 +252,7 @@ actions:
           size: 12
         - type: icon
           value: >
-            {% set cond = state_attr('sensor.weather_forecast_daily_2',
+            {% set cond = state_attr('sensor.weather_forecast_daily',
             'forecast')[3].condition %} {{ icons.get(cond, icons.fallback) }}
           x: 207
           anchor: mm
@@ -250,9 +262,9 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[3].templow
+            state_attr('sensor.weather_forecast_daily','forecast')[3].templow
             }} {{
-            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
           font: rbm.ttf
           x: 207
           "y": 90
@@ -261,9 +273,9 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[3].temperature
+            state_attr('sensor.weather_forecast_daily','forecast')[3].temperature
             }} {{
-            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
           font: rbm.ttf
           x: 207
           "y": 105
@@ -272,7 +284,7 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[3].precipitation
+            state_attr('sensor.weather_forecast_daily','forecast')[3].precipitation
             }} mm
           font: rbm.ttf
           x: 207
@@ -282,13 +294,17 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[3].uv_index
+            state_attr('sensor.weather_forecast_daily','forecast')[3].uv_index
             }} UV
           font: rbm.ttf
           x: 207
           "y": 135
           anchor: mt
           size: 12
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[3].uv_index
+            is defined }}
         - type: line
           x_start: 236
           x_end: 236
@@ -298,7 +314,7 @@ actions:
           fill: half_black
         - type: text
           value: >
-            {% set cond = (state_attr('sensor.weather_forecast_daily_2',
+            {% set cond = (state_attr('sensor.weather_forecast_daily',
             'forecast')[4].datetime|as_datetime).strftime('%a') %}
 
             {{ weekdays.get(cond, '--') }}
@@ -309,7 +325,7 @@ actions:
           size: 12
         - type: icon
           value: >
-            {% set cond = state_attr('sensor.weather_forecast_daily_2',
+            {% set cond = state_attr('sensor.weather_forecast_daily',
             'forecast')[4].condition %} {{ icons.get(cond, icons.fallback) }}
           x: 266
           anchor: mm
@@ -319,9 +335,9 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[4].templow
+            state_attr('sensor.weather_forecast_daily','forecast')[4].templow
             }} {{
-            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
           font: rbm.ttf
           x: 266
           "y": 90
@@ -330,9 +346,9 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[4].temperature
+            state_attr('sensor.weather_forecast_daily','forecast')[4].temperature
             }} {{
-            state_attr('sensor.weather_forecast_daily_2','temperature_unit') }}
+            state_attr('sensor.weather_forecast_daily','temperature_unit') }}
           font: rbm.ttf
           x: 266
           "y": 105
@@ -341,7 +357,7 @@ actions:
         - type: text
           value: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[4].precipitation
+            state_attr('sensor.weather_forecast_daily','forecast')[4].precipitation
             }} mm
           font: rbm.ttf
           x: 266
@@ -349,7 +365,7 @@ actions:
           anchor: mt
           size: 12
         - type: text
-          value: "{{ state_attr('sensor.weather_forecast_daily_2','forecast')[4] }} UV"
+          value: "{{ state_attr('sensor.weather_forecast_daily','forecast')[4] }} UV"
           font: rbm.ttf
           x: 266
           "y": 135
@@ -357,7 +373,7 @@ actions:
           size: 12
           visible: >-
             {{
-            state_attr('sensor.weather_forecast_daily_2','forecast')[4].uv_index
+            state_attr('sensor.weather_forecast_daily','forecast')[4].uv_index
             is defined }}
     action: open_epaper_link.drawcustom
     target:

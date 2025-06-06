@@ -82,6 +82,10 @@ actions:
           "y": 165
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[0].uv_index
+            is defined }}
         - type: line
           x_start: 77
           x_end: 77
@@ -151,6 +155,10 @@ actions:
           "y": 165
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[1].uv_index
+            is defined }}
         - type: line
           x_start: 154
           x_end: 154
@@ -220,6 +228,10 @@ actions:
           "y": 165
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[2].uv_index
+            is defined }}
         - type: line
           x_start: 231
           x_end: 231
@@ -289,6 +301,10 @@ actions:
           "y": 165
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[3].uv_index
+            is defined }}
         - type: line
           x_start: 308
           x_end: 308
