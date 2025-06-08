@@ -72,6 +72,9 @@ actions:
           "y": 150
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[0].precipitation > 0 }}
         - type: text
           value: >-
             {{
@@ -145,6 +148,9 @@ actions:
           "y": 150
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[1].precipitation > 0 }}
         - type: text
           value: >-
             {{
@@ -218,6 +224,9 @@ actions:
           "y": 150
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[2].precipitation > 0 }}
         - type: text
           value: >-
             {{
@@ -291,6 +300,9 @@ actions:
           "y": 150
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[3].precipitation > 0 }}
         - type: text
           value: >-
             {{
@@ -364,6 +376,9 @@ actions:
           "y": 150
           anchor: mt
           size: 14
+          visible: >-
+            {{
+            state_attr('sensor.weather_forecast_daily','forecast')[4].precipitation > 0 }}
         - type: text
           value: "{{ state_attr('sensor.weather_forecast_daily','forecast')[4] }} UV"
           font: rbm.ttf
